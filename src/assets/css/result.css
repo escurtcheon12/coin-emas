@@ -1,0 +1,17 @@
+.custom-table {
+    background-color: #f8f9fa; /* Light gray background */
+  }
+  
+  .custom-table th {
+    background-color: #343a40; /* Dark gray header background */
+    color: #fff; /* White text color */
+  }
+  
+  .custom-table td {
+    background-color: #fff; /* White cell background */
+  }
+  
+  .custom-table tbody tr:nth-of-type(odd) {
+    background-color: #e9ecef; /* Alternate row background color */
+  }
+  

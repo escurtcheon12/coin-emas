@@ -36,34 +36,15 @@ const Home = () => {
         </div>  
       </div>
 
-      {/* Visi and Misi Section */}
-      <div className="container mt-2">
-        <div className="row justify-content-center">
-          <div className="col-md-10">
-            <div className="row">
-              <div className="col-md-6 text-center p-4">
-                <h2 className="p-4" style={{ color: "#32EE88", fontWeight: "600" }}>Visi</h2>
-                <p>Menjadi aplikasi yang dapat membantu masyarakat dalam memantau dan meningkatkan kesehatan anak-anak untuk mencegah stunting.</p>
-              </div>
-              <div className="col-md-6 text-center p-4">
-                <h2 className="p-4" style={{ color: "#32EE88", fontWeight: "600" }}>Misi</h2>
-                <p>Memberikan informasi dan alat yang diperlukan kepada orang tua dan pengasuh untuk memantau dan meningkatkan asupan gizi anak-anak secara efektif.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
       {/* Owner Section */}
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 text-center p-4">
-            <h5 className="p-4">Made By</h5>
-            <img src={ownerImage} alt="Owner" className="img-fluid  mb-3" style={{ width: "130px" }} />
-            <h4 className="p-4"> Gati Dwi Cahyani Amd.Gz</h4>
+            <h5 className="p-3">Made By</h5>
+            <img src={ownerImage} alt="Owner" className="img-thumbnail" style={{ width: "130px" }} />
+            <h4 className="p-3"> Gati Dwi Cahyani Amd.Gz</h4>
             <p>Supported By</p>
-            <p>RSUD Keramat Jati Jakarta Timur</p>
+            <p>RSUD Kramat Jati Jakarta Timur</p>
           </div>  
         </div>
       </div>

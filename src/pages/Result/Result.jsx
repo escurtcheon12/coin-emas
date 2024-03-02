@@ -1,66 +1,93 @@
-import React from "react";
-import { Button, Container, Table } from "react-bootstrap";
+  import React from "react";
+  import { Button, Container, Table } from "react-bootstrap";
+  import { useLocation, useNavigate } from 'react-router-dom';
+  import "../../assets/css/result.css";
 
-const Result = () => {
-  return (
-    <>
-      <Container>
-        <div className="mt-5">
-          <Table striped bordered responsive>
-            <thead>
-              <tr className="text-center fw-bold">
-                <td colSpan={4}>Kebutuhan Gizi Harian</td>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th>Energi</th>
-                <th>Protein</th>
-                <th>Lemak</th>
-                <th>Karbohidrat</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1100 kkal</td>
-                <td>55 gr</td>
-                <td>31 gr</td>
-                <td>151,25 gr</td>
-              </tr>
-            </tbody>
-          </Table>
+  const Result = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+    if (!location || !location.state || !location.state.formData) {
+      console.log("No data found"); // Log if no data is found
+      return null;
+    }
 
-          <Table className="mt-5" striped bordered responsive>
-            <thead>
-              <tr className="text-center fw-bold">
-                <td colSpan={4}>Paket Stunting Untuk Kebutuhan Harian</td>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th>Ayam 40gr</th>
-                <th>Ikan 40gr</th>
-                <th>Telur 60gr</th>
-                <th>Daging 60gr</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>8 porsi</td>
-                <td>8 porsi</td>
-                <td>5,5 porsi</td>
-                <td>5,5 porsi</td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
+    const { formData, calories, proteinCalories, lemakCalories, carboCalories, totalPoints } = location.state;
+    
+    const handleNextClick = () => {
+      // Prepare the data to send
+      const dataToSend = { 
+        proteinCalories,
+        totalPoints // Include total points in the data to send
+      };
+      if (formData) {
+        dataToSend.formData = formData;
+      }
+      
+      // Navigate to the next page with the prepared data
+      navigate('/package', { state: dataToSend });
+    };
 
-        <div className="d-flex justify-content-end">
-          <Button variant="dark">NEXT</Button>
-        </div>
-      </Container>
-    </>
-  );
-};
+    return (
+      <>
+        <Container>
+          <div className="mt-5">
+            <h2 className="m-5 text-center fw-bold">Hasil Analisa Test </h2>
+            <Table striped bordered responsive className="custom-table"> {/* Add custom-table class for styling */}
+              <thead>
+                <tr className="text-center fw-bold">
+                  <td colSpan={4}>Kebutuhan Gizi Harian</td>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Energi</th>
+                  <th>Protein</th>
+                  <th>Lemak</th>
+                  <th>Karbohidrat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{calories} kkal</td>
+                  <td>{proteinCalories} gr</td>
+                  <td>{Math.round(lemakCalories)} gr</td>
+                  <td>{carboCalories} gr</td>
+                </tr>
+              </tbody>
+            </Table>
 
-export default Result;
+            <Table className="mt-5 custom-table" striped bordered responsive> {/* Add custom-table class for styling */}
+              <thead>
+                <tr className="text-center fw-bold">
+                  <td colSpan={4}>Paket Stunting Untuk Kebutuhan Harian</td>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Ayam 40gr</th>
+                  <th>Ikan 40gr</th>
+                  <th>Telur 60gr</th>
+                  <th>Daging 60gr</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td>{Math.round(proteinCalories / 7)} porsi</td>
+                <td>{Math.round(proteinCalories / 7)} porsi</td>
+                <td>{(proteinCalories / 10)} porsi</td>
+                <td>{(proteinCalories / 10)} porsi</td>
+                </tr>
+              </tbody>
+            </Table>
+          </div>
+
+          <div className="d-flex justify-content-center m-5">
+            <Button variant="dark" onClick={handleNextClick} style={{ width: "200px" }}>Lanjut</Button>
+          </div>
+        </Container>
+      </>
+    );
+  };
+
+  export default Result;

@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: "",
   gender: "",
-  age: 0,
-  height: 0,
-  weight: 0,
+  age: "",
+  height: "",
+  weight: "",
 };
 
 // Create reducer slice

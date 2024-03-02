@@ -9,7 +9,7 @@ const NavbarComponents = () => {
   return (
     <Navbar expand="lg" className="navbar text-light">
       <Container>
-        <Navbar.Brand href="#home" className="mr-auto">
+        <Navbar.Brand href="/" className="mr-auto">
           <img width={150} height={50} src={Logo} alt="Logo" />
         </Navbar.Brand>
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
