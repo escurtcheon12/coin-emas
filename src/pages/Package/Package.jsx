@@ -26,7 +26,7 @@ const Package = () => {
       "Paket Pilihan": selectedPackage,
       "Total Point": totalPoints,
       "Jenis Kelamin": formData.gender,
-      "Umur": formData.age,
+      Umur: formData.age,
       "Berat Badan": formData.weight,
       "Tinggi Badan": formData.height,
     };
@@ -41,7 +41,7 @@ const Package = () => {
         },
       })
       .then((response) => {
-        navigate("/");
+        navigate("/thankyou");
         console.log(response.data);
       })
       .catch((error) => {

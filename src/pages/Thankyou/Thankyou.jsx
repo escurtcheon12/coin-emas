@@ -1,6 +1,10 @@
+import { Button } from "react-bootstrap";
 import stuntingImage from "../../assets/images/stunting.jpg";
+import { useNavigate } from "react-router";
 
 const Thankyou = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="background-container">
       {/* Background image applied to the container */}
@@ -32,16 +36,24 @@ const Thankyou = () => {
           font-weight: 600;
         }
       `}</style>
-      
+
       {/* Overlay for opacity */}
       <div className="background-overlay"></div>
-      
+
       {/* Content inside the page */}
       <div className="container text-center content">
         <h1 className="display-4">Thank You!</h1>
         <h1 className="lead">Kiriman Anda telah diterima.</h1>
         <hr className="my-4" />
         <h5>Kami menghargai partisipasi Anda.</h5>
+
+        <Button
+          variant="dark"
+          className="mt-4 p-3"
+          onClick={() => navigate("/")}
+        >
+          Click untuk Kembali Mengisi
+        </Button>
       </div>
     </div>
   );
