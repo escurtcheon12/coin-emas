@@ -14,6 +14,8 @@ const Package = () => {
     ? location.state.proteinCalories
     : null;
   const totalPoints = location.state ? location.state.totalPoints : null;
+  const status = location.state ? location.state.status : null;
+
   const [loading, setLoading] = useState(false);
 
   const handlePackageSelection = (packageName) => {
@@ -30,10 +32,12 @@ const Package = () => {
       Umur: formData.age,
       "Berat Badan": formData.weight,
       "Tinggi Badan": formData.height,
+      Status: status,
     };
 
     console.log("formData", formData);
     console.log("dataToSend", dataToSend);
+    console.log("status", status);
 
     setLoading(true);
 
