@@ -78,18 +78,18 @@ const Survey = () => {
     try {
       const sheetApi = `${import.meta.env.VITE_SPREADSHEET_URL}/search?`;
       const searchDataByParent = await axios.get(
-        sheetApi + `Nama%20Ortu=${formData.parent}`
+        sheetApi + `Nama%20Ortu=*${formData.parent}*`
       );
       const searchDataByChildren = await axios.get(
-        sheetApi + `Nama%20Anak=${formData.name}`
+        sheetApi + `Nama%20Anak=*${formData.name}*`
       );
 
-      if (searchDataByParent.data.length >= 2) {
+      if (searchDataByParent.data.length >= 2 && formData.parent) {
         alert("Data nama orang tua sudah lebih dari 2");
         return;
       }
 
-      if (searchDataByChildren.data.length >= 2) {
+      if (searchDataByChildren.data.length >= 2 && formData.name) {
         alert("Data nama orang anak sudah lebih dari 2");
         return;
       }
