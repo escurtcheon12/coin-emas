@@ -53,9 +53,9 @@ const Survey = () => {
     return correctAnswers[question] === answer;
   };
 
-  const handleSendToSheet = async (point, data_parent_name) => {
+  const handleSendToSheet = async (data_parent_name) => {
     const dataSendToSheet = {
-      "Total Point Baru": point,
+      "Total Point Baru": questionnaire.totalPoints,
     };
 
     let url = `${
@@ -110,23 +110,20 @@ const Survey = () => {
       ) {
         let data_user = {
           parent_name: "",
-          point: 0,
         };
         if (searchDataByParent.data.length) {
           const [data] = searchDataByParent.data;
 
           data_user.parent_name = data["Nama Ortu"];
-          data_user.point = parseInt(data["Total Point"]);
         }
 
         if (searchDataByChildren.data.length) {
           const [data] = searchDataByChildren.data;
 
           data_user.parent_name = data["Nama Ortu"];
-          data_user.point += parseInt(data["Total Point"]);
         }
 
-        await handleSendToSheet(data_user.point, data_user.parent_name);
+        await handleSendToSheet(data_user.parent_name);
         return navigate("/thankyou");
       }
 
