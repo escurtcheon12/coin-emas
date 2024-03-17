@@ -80,9 +80,6 @@ const Survey = () => {
         sheetApi + `Nama%20Anak=*${formData.name}*`
       );
 
-      console.log(searchDataByParent.data);
-      console.log(searchDataByChildren.data);
-
       if (
         (searchDataByParent.data.length >= 2 && formData.parent) ||
         (searchDataByParent.data.length == 1 &&
