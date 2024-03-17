@@ -80,12 +80,18 @@ const Survey = () => {
         sheetApi + `Nama%20Anak=*${formData.name}*`
       );
 
-      if (searchDataByParent.data.length >= 2 && formData.parent) {
+      if (
+        (searchDataByParent.data.length >= 2 && formData.parent) ||
+        searchDataByParent.data["Total Point Baru"]
+      ) {
         alert("Data nama orang tua sudah lebih dari 2");
         return;
       }
 
-      if (searchDataByChildren.data.length >= 2 && formData.name) {
+      if (
+        (searchDataByChildren.data.length >= 2 && formData.name) ||
+        searchDataByChildren.data["Total Point Baru"]
+      ) {
         alert("Data nama orang anak sudah lebih dari 2");
         return;
       }
