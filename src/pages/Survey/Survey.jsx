@@ -80,19 +80,24 @@ const Survey = () => {
         sheetApi + `Nama%20Anak=*${formData.name}*`
       );
 
+      console.log(searchDataByParent.data);
+      console.log(searchDataByChildren.data);
+
       if (
         (searchDataByParent.data.length >= 2 && formData.parent) ||
-        searchDataByParent.data[0]["Total Point Baru"]
+        (searchDataByParent.data.length == 1 &&
+          searchDataByParent.data[0]["Total Point Baru"])
       ) {
-        alert("Data nama orang tua sudah lebih dari 2");
+        alert("Data nama orang tua sudah 2");
         return;
       }
 
       if (
         (searchDataByChildren.data.length >= 2 && formData.name) ||
-        searchDataByChildren.data[0]["Total Point Baru"]
+        (searchDataByChildren.data.length == 1 &&
+          searchDataByChildren.data[0]["Total Point Baru"])
       ) {
-        alert("Data nama orang anak sudah lebih dari 2");
+        alert("Data nama anak sudah 2");
         return;
       }
 
