@@ -82,7 +82,7 @@ const Survey = () => {
 
       if (
         (searchDataByParent.data.length >= 2 && formData.parent) ||
-        searchDataByParent.data["Total Point Baru"]
+        searchDataByParent[0].data["Total Point Baru"]
       ) {
         alert("Data nama orang tua sudah lebih dari 2");
         return;
@@ -90,7 +90,7 @@ const Survey = () => {
 
       if (
         (searchDataByChildren.data.length >= 2 && formData.name) ||
-        searchDataByChildren.data["Total Point Baru"]
+        searchDataByChildren[0].data["Total Point Baru"]
       ) {
         alert("Data nama orang anak sudah lebih dari 2");
         return;
