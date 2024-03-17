@@ -53,20 +53,16 @@ const Survey = () => {
     return correctAnswers[question] === answer;
   };
 
-  const handleSendToSheet = async (point) => {
+  const handleSendToSheet = async (point, data_parent_name) => {
     const dataSendToSheet = {
-      "Nama Ortu": formData.parent,
-      "Nama Anak": formData.name,
-      "Jenis Kelamin": formData.gender,
-      "Paket Pilihan": "",
-      "Total Point": questionnaire.totalPoints + point,
-      Umur: formData.age,
-      "Berat Badan": formData.weight,
-      "Tinggi Badan": formData.height,
-      Status: "After",
+      "Total Point Baru": point,
     };
 
-    await axios.post(import.meta.env.VITE_SPREADSHEET_URL, dataSendToSheet, {
+    let url = `${
+      import.meta.env.VITE_SPREADSHEET_URL
+    }/Nama%20Ortu/*${data_parent_name}*`;
+
+    await axios.put(url, dataSendToSheet, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -112,21 +108,26 @@ const Survey = () => {
         searchDataByParent.data.length == 1 ||
         searchDataByChildren.data.length == 1
       ) {
-        let point = 0;
+        let data_user = {
+          parent_name: "",
+          point: 0,
+        };
         if (searchDataByParent.data.length) {
           const [data] = searchDataByParent.data;
 
-          point += parseInt(data["Total Point"]);
+          data_user.parent_name = data["Nama Ortu"];
+          data_user.point = parseInt(data["Total Point"]);
         }
 
         if (searchDataByChildren.data.length) {
           const [data] = searchDataByChildren.data;
 
-          point += parseInt(data["Total Point"]);
+          data_user.parent_name = data["Nama Ortu"];
+          data_user.point += parseInt(data["Total Point"]);
         }
 
-        await handleSendToSheet(point);
-        return navigate("/");
+        await handleSendToSheet(data_user.point, data_user.parent_name);
+        return navigate("/thankyou");
       }
 
       const calories = parseInt(formData.weight) * 100;
@@ -141,11 +142,6 @@ const Survey = () => {
           lemakCalories: lemakCalories,
           carboCalories: carboCalories,
           totalPoints: questionnaire.totalPoints,
-          status:
-            searchDataByParent.data.length >= 1 ||
-            searchDataByChildren.data.length >= 1
-              ? "After"
-              : "Before",
         },
       });
     } catch (err) {
