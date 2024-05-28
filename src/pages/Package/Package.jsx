@@ -61,6 +61,10 @@ const Package = () => {
     }
   };
 
+  const handleContinue = () => {
+    navigate("/thankyou");
+  };
+
   return (
     <>
       <Container>
@@ -151,6 +155,15 @@ const Package = () => {
                   </Button>
                 </div>
               )}
+              <div className="m-5 d-flex justify-content-center">
+                <Button
+                  variant="primary"
+                  onClick={handleContinue}
+                  style={{ width: "200px" }} // Adjust the width as needed
+                >
+                  Lanjut
+                </Button>
+              </div>
             </div>
           </div>
         )}
