@@ -46,7 +46,7 @@ const Thankyou = () => {
 
         <a
           className="mt-4 p-3 btn btn-dark"
-          href="/src/assets/files/leaflet.pdf"
+          href="/leaflet.pdf"
           target="_blank"
           download
         >
