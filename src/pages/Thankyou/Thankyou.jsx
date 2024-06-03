@@ -39,7 +39,7 @@ const Thankyou = () => {
 
       {/* Content inside the page */}
       <div className="container text-center content">
-        <h1 className="display-4">Thank You!</h1>
+        <h1 className="display-4">Terima Kasih !</h1>
         <h1 className="lead">Kiriman Anda telah diterima.</h1>
         <hr className="my-4" />
         <h5>Kami menghargai partisipasi Anda.</h5>
