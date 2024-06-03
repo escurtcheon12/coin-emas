@@ -44,14 +44,14 @@ const Thankyou = () => {
         <hr className="my-4" />
         <h5>Kami menghargai partisipasi Anda.</h5>
 
-        <Link
+        <a
           className="mt-4 p-3 btn btn-dark"
-          to="/src/assets/files/leaflet.pdf"
+          href="/src/assets/files/leaflet.pdf"
           target="_blank"
           download
         >
           Download Leaflet
-        </Link>
+        </a>
       </div>
     </div>
   );
