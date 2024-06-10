@@ -165,7 +165,7 @@ const Survey = () => {
       ) : (
         <Container className=" p-5">
           <h2 className="row justify-content-center mb-5">
-            Form Data Diri dan Pretest
+            Form Data Diri dan Skrining Gizi
           </h2>
           <Form onSubmit={handleSubmit}>
             <div>
